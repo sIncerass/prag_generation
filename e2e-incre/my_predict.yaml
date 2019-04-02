@@ -1,0 +1,50 @@
+experiments_dir: /data/sheng/e2e/e2e_nlg_challenge_2017/experiments
+log_level: INFO
+random_seed: 1
+
+# choose from: predict, train
+mode: predict
+
+# If mode is 'predict', specify the model name,
+# e.g. /path/to/model/weights.epoch5
+model_fn: experiments/select_model_v1/weights.epoch8
+
+# Model module names
+data-module: components.data.e2e_data_MLP
+model-module: components.model.e2e_model_MLP
+training-module: components.trainer.e2e_trainer_MLP
+evaluation-module: components.evaluator.e2e_evaluator
+
+data_params:
+
+  train_data: /data/sheng/e2e/data/trainset.csv
+  #dev_data: /data/sheng/e2e/data/devset.csv
+  dev_data: /data/sheng/e2e/data/testset_w_refs.csv
+  test_data: /data/sheng/e2e/data/testset_w_refs.csv # specify the file to make preictions on
+
+  max_src_len: 50
+  max_tgt_len: 100
+
+model_params:
+
+  embedding_dim: 256
+  embedding_dropout: 0.1
+  teacher_forcing_ratio: 1.0
+
+  encoder_params:
+    input_size: 256 # NOTE: should be equal to embedding_dim
+    hidden_size: 512
+    dropout: 0.0
+
+  decoder_params:
+    input_size: 512
+    hidden_size: 512
+    dropout: 0.0
+
+training_params:
+  evaluate_prediction: True
+  save_model_each_epoch: True
+  n_epochs: 30
+  batch_size: 16
+  optimizer: SGD
+  learning_rate: 0.1
