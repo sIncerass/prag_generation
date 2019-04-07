@@ -1,1 +1,4 @@
-# prag_generation
+# Pragmatically Informative Text Generation
+
+
+working in process.
