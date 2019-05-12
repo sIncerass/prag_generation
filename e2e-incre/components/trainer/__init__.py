@@ -107,7 +107,8 @@ class BaseTrainer(object):
             train_loss = self.train_epoch(epoch_idx, model, train_batches)
             dev_loss = self.compute_val_loss(model, dev_batches)
 
-            predicted_ids, attention_weights = evaluator.evaluate_model(model, data.dev[0], data.uni_mr['dev'])
+            predicted_ids, attention_weights = evaluator.evaluate_model(model, data.dev[0], data.uni_mr['dev'], dis=False)
+            #print(len(predicted_ids))
             predicted_tokens = evaluator.lexicalize_predictions(predicted_ids,
                                                                 dev_lexicalizations,
                                                                 id2word)

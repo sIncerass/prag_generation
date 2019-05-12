@@ -146,7 +146,7 @@ class BaseDataClass(object):
                 """
         if group_ref:
             gen_multi_ref_dev(orig, fname='%s.multi-ref' % fname)
-
+        print(len(raw_data_x), len(raw_data_y), len(lexicalizations), len(uni_mrs))
         return raw_data_x, raw_data_y, lexicalizations, uni_mrs
 
     def read_csv_test(self, fname):
