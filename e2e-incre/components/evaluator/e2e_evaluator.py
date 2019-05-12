@@ -87,8 +87,8 @@ class BaseEvaluator(object):
                             if dis_cur[cur_f] != 5:
                                 pp.append( dis_cur[cur_f] )
                         outs[ cur_f ] = Counter(pp).most_common()[0][0]
-                    else:
-                        pp.append( cur_f )
+                    #else:
+                        #pp.append( cur_f )
                 return outs
             # """
             p = mask_(snt_ids, dis_ids, dev_data)
